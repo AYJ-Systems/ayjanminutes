@@ -6,6 +6,9 @@ Professional Windows audio recorder with an intuitive GUI that captures mic + sy
 
 Records as stereo WAV, transcripts saved as plain text, and structured meeting minutes exported as professionally-formatted Word documents.
 
+<img width="736" height="645" alt="Screenshot 2026-05-10 185815" src="https://github.com/user-attachments/assets/a1fa4830-26e3-4ffd-9131-0ff57e62fcd8" />
+
+
 ## Quick Start
 
 ### Option 1: Download Installer (Recommended)
