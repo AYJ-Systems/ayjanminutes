@@ -12,7 +12,7 @@ Records as stereo WAV, transcripts saved as plain text, and structured meeting m
 ## Quick Start
 
 ### Option 1: Download Installer (Recommended)
-Download the latest stub installer from the [GitHub Releases page](https://ayj-systems.github.io/ai_note_taker_releases/).
+Download the latest stub installer from the [Website](https://ayj-systems.github.io/ai_note_taker_releases/).
 
 Run `AI-Note-Taker-Setup.exe` — it's a small (~15 MB) installer that downloads and installs the full app. During setup you can optionally download the Whisper transcription model so it is ready before your first meeting. No Python or manual setup needed.
 
