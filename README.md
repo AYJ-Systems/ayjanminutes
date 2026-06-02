@@ -90,16 +90,6 @@ The Word document is formatted according to your template and includes:
 - **Next Meeting**: Scheduled date/time if mentioned
 - **Action Items Summary**: Color-coded by owner (🟢 Internal, 🟡 External, 🔵 Cross-party)
 
-## Attendee Name Recognition
-
-When generating meeting minutes, the app passes a list of possible attendee names to Claude so it can correct spelling errors from the Whisper transcription (e.g. "Ning" → "Naing").
-
-Names are stored in `assets/possible_names.csv` and managed via **Names** in the main menu.
-
-Names in the list are treated as *possible* attendees — Claude only uses names that appear in the transcript and does not add unlisted people as attendees.
-
-You can also edit `assets/possible_names.csv` directly (one name per row, with a `name` header).
-
 ## faster-whisper Models
 
 | Model    | Size  | Speed | Accuracy |
@@ -164,88 +154,6 @@ GPU transcription is typically **3–5x faster** than CPU on medium/large models
 
 **CPU is fine for:** Quick notes, small models (tiny/base)
 **GPU is recommended for:** Large models (medium/large-v3), long recordings
-
-## Limitations
-
-- Speech-only: Music and non-speech audio are filtered out
-- Accuracy depends on audio quality (noise, clarity, volume)
-
-## Troubleshooting
-
-### Recording Issues
-
-**No audio captured**
-- Open the GUI and check the **Select Microphone** and **Select Speaker** dropdowns
-- Verify all available devices are showing in the dropdowns
-- Verify mic and speaker are working in Windows Settings
-
-**Audio is quiet or distorted**
-- Check Windows volume levels for mic and system audio
-- Try adjusting gain in device settings
-- Try a different microphone from the dropdown
-
-### Transcription Issues
-
-**Transcription not running**
-- Verify `transcription.enabled: true` in `config.yaml`
-- Check `faster-whisper` is installed: `pip install faster-whisper`
-- Verify you have enough disk space for model cache (~1-5GB)
-
-**Transcription is very slow**
-- If the model wasn't downloaded during installation, the first transcription downloads it — wait for completion
-- Subsequent runs use the cached model from `%USERPROFILE%\.cache\ai_note_taker\models\`
-- Try smaller model: change `model_size: tiny` or `base` in Settings
-- **Enable GPU**: Install CUDA Toolkit 12.x for 3–5x speedup (see [GPU Acceleration](#gpu-acceleration) section)
-
-**GPU errors (CUDA not found, cublas DLL missing, etc.)**
-- Install **CUDA Toolkit 12.x** from [NVIDIA's archive](https://developer.nvidia.com/cuda-downloads-archive)
-- Verify CUDA is available: 
-  ```bash
-  nvcc --version
-  ```
-  Should show version 12.x
-- Test ctranslate2 support:
-  ```bash
-  python -c "import ctranslate2; print(ctranslate2.get_supported_compute_types('cuda'))"
-  ```
-  Should print: `['float32', 'float16', 'int8_float16', 'int8']`
-- If still failing, fall back to CPU: change `device: cpu` in `config.yaml`
-
-**Transcription fails on audio file**
-- For non-WAV formats (MP3, M4A, FLAC): install ffmpeg from https://ffmpeg.org/download.html
-- Add ffmpeg to Windows PATH or place in `utils/` folder
-
-### Meeting Minutes Issues
-
-**Meeting minutes not generating**
-- Go to **Settings** and toggle **Enable Summarization** ON
-- Enter your Claude API key when prompted (or paste it from your Anthropic console)
-- Restart the app after entering the key
-
-**"No API key provided" error**
-- Click the API Key field in Settings and enter your key from https://console.anthropic.com
-- Key should start with `sk-ant-`
-- Click "Save API Key" to store it securely
-
-**Invalid/expired API key**
-- Get a new key from https://console.anthropic.com
-- Clear the key field in Settings and enter the new one
-- Click "Save API Key" and restart the app
-
-**Word document formatting issues**
-- Ensure `assets/meeting_minutes_TEMPLATE.docx` exists in the app directory
-- Ensure `assets/note_taker_prompt.txt` exists (meeting minutes prompt template)
-- Try re-transcribing the recording to regenerate minutes
-
-### General
-
-**"Module not found" errors**
-- Activate venv: `venv\Scripts\activate`
-- Install dependencies: `pip install -r requirements.txt`
-
-**Permission denied on venv/Scripts/**
-- Right-click Command Prompt → "Run as Administrator"
-- Then activate venv and try again
 
 ## Project Structure
 
