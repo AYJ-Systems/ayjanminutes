@@ -1,7 +1,7 @@
 # AYJ Note Taker
 
 Professional Windows audio recorder with an intuitive GUI that captures mic + system audio simultaneously, then:
-1. **Transcribes** using local `faster-whisper` models (no API calls)
+1. **Transcribes** using local `whisper` models (no API calls)
 2. **Generates AI meeting minutes** using Claude or OpenAI API (optional)
 
 Records as stereo WAV, transcripts saved as plain text, and structured meeting minutes exported as professionally-formatted Word documents.
