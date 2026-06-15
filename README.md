@@ -187,6 +187,3 @@ ai_note_taker/
     └── AI Note Taker/   # Distribute this entire folder (zip it)
 ```
 
-## License
-
-MIT
