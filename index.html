@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -339,6 +339,37 @@
     .s-line:nth-child(1) { width: 95%; }
     .s-line:nth-child(2) { width: 80%; }
     .s-line:nth-child(3) { width: 70%; }
+
+    /* ── Demo video ── */
+    .demo {
+      padding: 5rem clamp(1.5rem, 6vw, 5rem);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .demo-title {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400;
+      text-align: center;
+    }
+    .demo-title em { color: var(--accent); font-style: italic; }
+    .demo-frame {
+      width: 100%;
+      max-width: 860px;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--bg-2);
+    }
+    .demo-frame iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+    }
 
     /* ── Section base ── */
     section {
@@ -787,6 +818,19 @@
           The only data that ever leaves your machine is the <strong>text transcript</strong> — and only when you choose to generate a summary. You pick the AI provider. You control your data.
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- Demo -->
+  <section class="demo">
+    <h2 class="demo-title reveal">See it in <em>action</em></h2>
+    <div class="demo-frame reveal reveal-delay-1">
+      <iframe
+        src="https://www.youtube.com/embed/MCs8JtUT5D4"
+        title="Ayjan Minutes demo"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
     </div>
   </section>
 
